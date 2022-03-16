@@ -34,7 +34,6 @@ class CreateVereadorsTable extends Migration
     {
         Schema::table('materiais', function (Blueprint $table){
             $table->dropForeign('materiais_vereador_id_foreign');
-
             $table->dropColumn('vereador_id');
         });
 
