@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('material', 'App\Http\Controllers\MaterialController');
+Route::resource('vereador', 'App\Http\Controllers\VereadorController');
+Route::resource('fornecedor', 'App\Http\Controllers\FornecedorController');
