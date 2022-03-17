@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::resource('material', 'App\Http\Controllers\MaterialController');
 Route::resource('vereador', 'App\Http\Controllers\VereadorController');
 Route::resource('fornecedor', 'App\Http\Controllers\FornecedorController');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
