@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Vereador;
 
 class VereadorController extends Controller
 {
@@ -13,7 +14,7 @@ class VereadorController extends Controller
      */
     public function index()
     {
-        return view('vereador');
+        return view('vereadores');
     }
 
     /**
@@ -23,7 +24,7 @@ class VereadorController extends Controller
      */
     public function create()
     {
-        //
+        return view('componentes.form_cad_vereador');
     }
 
     /**
@@ -34,7 +35,9 @@ class VereadorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Vereador::create($request->all());
+
+        redirect()->route('vereador.index');
     }
 
     /**

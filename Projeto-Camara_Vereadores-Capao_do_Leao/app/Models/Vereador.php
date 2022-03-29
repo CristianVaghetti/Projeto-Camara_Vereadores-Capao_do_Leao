@@ -9,4 +9,5 @@ class Vereador extends Model
 {
     use HasFactory;
     protected $table = 'vereadores';
+    protected $fillable = ['nome', 'matricula'];
 }
