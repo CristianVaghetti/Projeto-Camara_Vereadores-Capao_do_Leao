@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Fornecedor;
+
 
 class FornecedorController extends Controller
 {
@@ -13,7 +15,8 @@ class FornecedorController extends Controller
      */
     public function index()
     {
-        return view('fornecedor');
+        $fornecedores = Fornecedor::all();
+        return view('fornecedores', ['fornecedores' => $fornecedores]);
     }
 
     /**
@@ -23,7 +26,7 @@ class FornecedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('componentes.form_cad_fornecedor');
     }
 
     /**
@@ -34,7 +37,9 @@ class FornecedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Fornecedor::create($request->all());
+
+        return redirect()->route('fornecedor.index');
     }
 
     /**
@@ -54,9 +59,9 @@ class FornecedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Fornecedor $fornecedor)
     {
-        //
+        return view('componentes.form_edit_fornecedor', ['fornecedor' => $fornecedor]);
     }
 
     /**
@@ -66,9 +71,10 @@ class FornecedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Fornecedor $fornecedor, Request $request)
     {
-        //
+        $fornecedor->update($request->all());
+        return redirect()->route('fornecedor.index');
     }
 
     /**
@@ -77,8 +83,9 @@ class FornecedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Fornecedor $fornecedor)
     {
-        //
+        $fornecedor->delete();
+        return redirect()->route('fornecedor.index');
     }
 }
