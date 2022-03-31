@@ -17,10 +17,12 @@ Route::get('/', function () {
     return view('home');
 });
 Route::middleware('auth')->prefix('/auth')->group(function (){
+    
     Route::resource('material', 'App\Http\Controllers\MaterialController');
     Route::resource('vereador', 'App\Http\Controllers\VereadorController');
     Route::resource('fornecedor', 'App\Http\Controllers\FornecedorController');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 });
 Route::auth();
 

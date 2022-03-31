@@ -14,7 +14,8 @@ class VereadorController extends Controller
      */
     public function index()
     {
-        return view('vereadores');
+        $vereadores = Vereador::all();
+        return view('vereadores', ['vereadores' => $vereadores]);
     }
 
     /**
@@ -37,7 +38,7 @@ class VereadorController extends Controller
     {
         Vereador::create($request->all());
 
-        redirect()->route('vereador.index');
+        return redirect()->route('vereador.index');
     }
 
     /**
@@ -57,9 +58,9 @@ class VereadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Vereador $vereador)
     {
-        //
+        return view('componentes.form_edit_vereador', ['vereador' => $vereador]);
     }
 
     /**
@@ -69,9 +70,10 @@ class VereadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Vereador $vereador)
     {
-        //
+        $vereador->update($request->all());
+        return redirect()->route('vereador.index');
     }
 
     /**
@@ -80,8 +82,9 @@ class VereadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Vereador $vereador)
     {
-        //
+        $vereador->delete();
+        return redirect()->route('vereador.index');
     }
 }
