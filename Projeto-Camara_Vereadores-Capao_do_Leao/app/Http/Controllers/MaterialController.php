@@ -13,7 +13,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        return view('material');
+        return view('materiais');
     }
 
     /**
@@ -23,7 +23,7 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        //
+        return view('componentes.form_cad_material');
     }
 
     /**
