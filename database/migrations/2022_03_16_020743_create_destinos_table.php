@@ -20,7 +20,7 @@ class CreateDestinosTable extends Migration
         });
 
         Schema::table('materiais', function (Blueprint $table) {
-            $table->unsignedBigInteger('destino_id')->nullable();
+            $table->unsignedBigInteger('destino_id')->nullable()->after('fornecedor_id');
             $table->foreign('destino_id')->references('id')->on('destinos');
         });
     }

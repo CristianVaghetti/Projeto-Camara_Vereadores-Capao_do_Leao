@@ -20,7 +20,7 @@ class CreateTipoMaterialsTable extends Migration
         });
 
         Schema::table('materiais', function (Blueprint $table) {
-            $table->unsignedBigInteger('tipo_id');
+            $table->unsignedBigInteger('tipo_id')->after('destino_id');
             $table->foreign('tipo_id')->references('id')->on('tipo_materiais');
         });
     }

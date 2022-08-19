@@ -18,11 +18,6 @@ class CreateVereadorsTable extends Migration
             $table->string("nome", 50);
             $table->timestamps();
         });
-
-        Schema::table('materiais', function (Blueprint $table){
-            $table->unsignedBigInteger('vereador_id')->nullable();
-            $table->foreign('vereador_id')->references('id')->on('vereadores');
-        });
     }
 
     /**
@@ -32,11 +27,6 @@ class CreateVereadorsTable extends Migration
      */
     public function down()
     {
-        Schema::table('materiais', function (Blueprint $table){
-            $table->dropForeign('materiais_vereador_id_foreign');
-            $table->dropColumn('vereador_id');
-        });
-
         Schema::dropIfExists('vereadores');
     }
 }

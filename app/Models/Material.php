@@ -9,4 +9,5 @@ class Material extends Model
 {
     use HasFactory;
     protected $table = 'materiais';
+    protected $fillable = ['descricao', 'valor', 'quantidade', 'fornecedor_id', 'tipo_id'];
 }

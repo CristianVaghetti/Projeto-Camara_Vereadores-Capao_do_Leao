@@ -21,7 +21,7 @@ class CreateFornecedorsTable extends Migration
         });
 
         Schema::table('materiais', function (Blueprint $table) {
-            $table->unsignedBigInteger('fornecedor_id');
+            $table->unsignedBigInteger('fornecedor_id')->after('quantidade');
             $table->foreign('fornecedor_id')->references('id')->on('fornecedores');
         });
     }
