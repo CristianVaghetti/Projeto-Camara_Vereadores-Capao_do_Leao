@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fornecedor;
 use App\Models\Material;
+use App\Models\TipoMaterial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\VarDumper\VarDumper;
 
 class MaterialController extends Controller
 {
@@ -12,10 +16,13 @@ class MaterialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $flag = isset($request->flag) ? $request->flag : 'nada';
         $materiais = Material::all();
-        return view('materiais', ['materiais' => $materiais]);
+        $fornecedores = Fornecedor::all();
+        $tiposMateriais = TipoMaterial::all();
+        return view('materiais', ['flag' => $flag, 'materiais' => $materiais, 'fornecedores' => $fornecedores, 'tiposMateriais' => $tiposMateriais]);
     }
 
     /**
@@ -23,10 +30,13 @@ class MaterialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('componentes.form_cad_material');
-    }
+    // public function create()
+    // {
+    //     $fornecedores = Fornecedor::all();
+    //     $tiposMateriais = TipoMaterial::all();
+    //     $materiais = Material::all();
+    //     return view('componentes.form_cad_material', ['fornecedores' => $fornecedores, 'tiposMateriais' => $tiposMateriais, 'materiais' => $materiais]);
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +46,8 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Material::create($request->all());
+        return redirect()->route('material.index');
     }
 
     /**
