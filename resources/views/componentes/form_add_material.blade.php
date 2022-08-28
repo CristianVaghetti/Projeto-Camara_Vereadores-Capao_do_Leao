@@ -8,15 +8,16 @@
             </div>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{route('material.store')}}">
+            <form method="POST" action="{{route('material.update', ['material' => $material->id])}}">
                 @csrf
+                @method('PUT')
                 <div class="row mb-3">
-                    <label for="material" class="col-md-4 col-form-label text-md-end">Descricao</label>
+                    <label for="id" class="col-md-4 col-form-label text-md-end">Descricao</label>
                     <div class="col-md-6">
-                        <select class="form-select" aria-label="Default select example" name="material" id="material">
+                        <select class="form-select" aria-label="Default select example" name="id" id="id">
                             <option selected>Descricao</option>
                             @foreach($materiais as $material)
-                            <option value="{{$material->id}}">{{$material->nome}}</option>
+                            <option value="{{$material->id}}">{{$material->descricao}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -24,7 +25,7 @@
                 <div class="row mb-3">
                     <label for="quantidade" class="col-md-4 col-form-label text-md-end">Quantidade</label>
                     <div class="col-md-3">
-                    <input id="valor" type="int" class="form-control" name="valor" value="{{ old('valor') }}" required>
+                    <input id="quantidade" type="int" class="form-control" name="quantidade" value="{{ old('quantidade') }}" required>
                     </div>
                 </div>
                 <div class="row mb-0">

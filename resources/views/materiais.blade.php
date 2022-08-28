@@ -10,7 +10,7 @@
                             <h2>Materiais</h2>
                         </div>
                         <div class="col-2"><a href="{{route('material.index', ['flag' => 'Cadastrar'])}}"><button type="button" class="btn btn-success">Cadastrar</button></a></div>
-                        <div class="col-2"><a href="{{route('material.index', ['flag' => 'Adicionar'])}}"><button type="button" class="btn btn-success">Adicionar</button></a></div>
+                        <div class="col-2"><a href="{{route('material.index', ['flag' => 'Adicionar'])}}"><button type="button" class="btn btn-dark">Adicionar</button></a></div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -46,7 +46,7 @@
             @include('componentes.form_add_material', ['materiais' => $materiais])
         @endif
         @if($flag == 'Cadastrar')
-            @include('componentes.form_cad_material', ['fornecedores' => $fornecedores, 'tiposMateriais' => $tiposMateriais, 'materiais' => $materiais])
+            @include('componentes.form_cad_material', ['fornecedores' => $fornecedores, 'tiposMateriais' => $tiposMateriais])
         @endif
     </div>
 </div>
