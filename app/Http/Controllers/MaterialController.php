@@ -6,8 +6,6 @@ use App\Models\Fornecedor;
 use App\Models\Material;
 use App\Models\TipoMaterial;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Symfony\Component\VarDumper\VarDumper;
 
 class MaterialController extends Controller
 {

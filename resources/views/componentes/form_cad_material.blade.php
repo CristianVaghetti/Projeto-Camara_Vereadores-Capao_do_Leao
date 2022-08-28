@@ -36,7 +36,7 @@
                     <label for="fornecedor_id" class="col-md-4 col-form-label text-md-end">Fornecedor</label>
                     <div class="col-md-6">
                         <select class="form-select" aria-label="Default select example" name="fornecedor_id" id="fornecedor_id">
-                            <option selected>Fornecedores</option>
+                            <option selected>Fornecedor</option>
                             @foreach($fornecedores as $fornecedor)
                             <option value="{{$fornecedor->id}}">{{$fornecedor->nome}}</option>
                             @endforeach
@@ -58,7 +58,7 @@
 
                 <div class="row mb-0">
                     <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
                     </div>
                 </div>
             </form>
